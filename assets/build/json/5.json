@@ -1,0 +1,23 @@
+{
+  "name": "Homework Collection #5",
+  "description": "Homework for arkania",
+  "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/5.png",
+  "edition": 5,
+  "attributes": [
+    [
+      {
+        "trait_type": "average color",
+        "value": "rgb(175,123,14)"
+      },
+      {
+        "trait_type": "What is this?",
+        "value": "NOT a Hot Dog"
+      },
+      {
+        "trait_type": "date",
+        "value": 1879
+      }
+    ]
+  ],
+  "compiler": "HashLips Art Engine"
+}

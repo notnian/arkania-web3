@@ -1,0 +1,232 @@
+[
+  {
+    "name": "Homework Collection #1",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/1.png",
+    "edition": 1,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(73,75,201)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1554
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #10",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/10.png",
+    "edition": 10,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(220,180,181)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1815
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #2",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/2.png",
+    "edition": 2,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(76,78,209)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1683
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #3",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/3.png",
+    "edition": 3,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(72,75,199)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1686
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #4",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/4.png",
+    "edition": 4,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(165,116,14)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1676
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #5",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/5.png",
+    "edition": 5,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(175,123,14)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1879
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #6",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/6.png",
+    "edition": 6,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(76,79,210)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1553
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #7",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/7.png",
+    "edition": 7,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(167,117,14)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1811
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #8",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/8.png",
+    "edition": 8,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(166,117,14)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1739
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  },
+  {
+    "name": "Homework Collection #9",
+    "description": "Homework for arkania",
+    "image": "ipfs://QmV3dBLBJsrzhXN3Kv3Dm6S2Yv36PChxoUQ3sRJsb9tmc2/9.png",
+    "edition": 9,
+    "attributes": [
+      [
+        {
+          "trait_type": "average color",
+          "value": "rgb(173,122,15)"
+        },
+        {
+          "trait_type": "What is this?",
+          "value": "NOT a Hot Dog"
+        },
+        {
+          "trait_type": "date",
+          "value": 1568
+        }
+      ]
+    ],
+    "compiler": "HashLips Art Engine"
+  }
+]

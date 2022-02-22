@@ -13,3 +13,16 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+TODO:
+
+- 10 NFT
+- 10% de royalties sur OpenSea
+- Metadatas sur IPFS
+- Prix fixes
+- Frontend pour achter le NFT avec metamask
+
+Bonus:
+
+- Split royalties sur 2 addresses et OpenSea
+- Lazy Minting
