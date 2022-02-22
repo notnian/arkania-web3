@@ -14,7 +14,16 @@ pnpm install
 pnpm run start
 ```
 
-Objectifs:
+## Audit smart contracts inside docker toolbox
+
+```bash
+# docker pull trailofbits/eth-security-toolbox
+docker run --rm -it -v "$PWD:/code" trailofbits/eth-security-toolbox
+# Static analysis
+slither /code/contracts --solc-remaps @openzeppelin=/code/node_modules/@openzeppelin
+```
+
+## Objectifs du projet:
 - 10 NFT
 - 10% de royalties sur OpenSea
 - Metadata sur IPFS

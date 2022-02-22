@@ -15,18 +15,19 @@ contract HomeworkToken is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
-    uint8 tokens = 10;
-    uint public mintPrice = 0.001 ether;
+    uint8 constant private tokens = 10;
+    uint56 constant public mintPrice = 0.001 ether;
     address payable royalties;
 
     constructor(address payable _royalties) ERC721("Homework", "HOW") {
+        require(address(0) != _royalties, "Require valid royalties address");
         // Start counter to 1
         _tokenIdCounter.increment();
         royalties = _royalties;
     }
 
     // 1000000000000000 wei
-    function safeMint() public payable {
+    function safeMint() external payable {
         require(msg.value == mintPrice, "Mint price is 0.001eth");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
