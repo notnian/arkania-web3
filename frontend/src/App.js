@@ -1,22 +1,16 @@
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
+import Metamask from './Metamask';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>Homework collectibles</h1>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h3>Metamask connect x Nft Mint</h3>
+        <p>Mint cost: 0.001eth</p>
+        <Metamask></Metamask>
       </header>
     </div>
   );
