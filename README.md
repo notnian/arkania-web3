@@ -39,3 +39,4 @@ Pour voir le resultat (Rinkby testnet):
 Aperçu du frontend
 
 ![Frontend](https://raw.githubusercontent.com/notnian/arkania-web3/main/frontend/screenshot-frontend.png)
+![Frontend](https://raw.githubusercontent.com/notnian/arkania-web3/main/frontend/screenshot-frontend-bis.png)

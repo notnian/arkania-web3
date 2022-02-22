@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
-import HomeworkToken_abi from './contracts/HomeworkToken_abi.json'
+import HomeworkToken_abi from '../contracts/HomeworkToken_abi.json'
 
 const Metamask = ()=>{
     const contractAddress = '0xf4f2fcD073912D08EEDeA09Ac49eEd4F40803364';
@@ -61,7 +61,10 @@ const Metamask = ()=>{
     window.ethereum.on("chainChanged", () => window.location.reload());
 
     return (
-        <div className="metamask">
+        <div style={{marginBottom: "100px"}}>
+            <h3>Metamask connect x Nft Mint</h3>
+            <p>Mint cost: 0.001eth</p>
+
             <button onClick={connectHandler}>{buttonText}</button><br />
             <div>
                 <p>Address: {account}</p>
