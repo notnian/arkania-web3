@@ -2,76 +2,73 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
+import "./Royalties.sol";
 
-// 0xf4f2fcD073912D08EEDeA09Ac49eEd4F40803364
 /// @custom:security-contact contact@notnian.dev
-contract HomeworkToken is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+contract HomeworkToken is ERC721, Ownable {
+    using Strings for uint256;
     using Counters for Counters.Counter;
-
     Counters.Counter private _tokenIdCounter;
 
-    uint8 constant private tokens = 10;
-    uint56 constant public mintPrice = 0.001 ether;
-    address payable royalties;
+    uint8 constant private maxSupply = 10;
+    uint56 constant private mintPrice = 0.001 ether;
 
-    constructor(address payable _royalties) ERC721("Homework", "HOW") {
-        require(address(0) != _royalties, "Require valid royalties address");
-        // Start counter to 1
-        _tokenIdCounter.increment();
-        royalties = _royalties;
+    string private uriPrefix = "ipfs://QmP6Qh2cZemgAtbq7j4eR5gjAGA8mLGKmvRqXcLPr4PTDY/";
+    string private uriSuffix = ".json";
+
+    Royalties private royalties;
+
+    constructor(address[] memory _royalitesPayees, uint256[] memory _royalitesShares) ERC721("Homework", "HOW") {
+        // Deploy paymentSplitter
+        royalties = new Royalties(_royalitesPayees, _royalitesShares);
     }
 
-    // 1000000000000000 wei
-    function safeMint() external payable {
-        require(msg.value == mintPrice, "Mint price is 0.001eth");
-        uint256 tokenId = _tokenIdCounter.current();
-        _tokenIdCounter.increment();
-        _safeMint(msg.sender, tokenId);
-        _setTokenURI(tokenId, string(abi.encodePacked("ipfs://QmP6Qh2cZemgAtbq7j4eR5gjAGA8mLGKmvRqXcLPr4PTDY/",Strings.toString(tokenId) ,".json")));
+    modifier mintRequirements() {
+        require(msg.value == mintPrice, "Mint price is set to 0.001 eth");
+        require(_tokenIdCounter.current() < maxSupply, "Supply is limited to 10!");
+        _;
     }
+
+    function safeMint() external payable mintRequirements {
+        _tokenIdCounter.increment();
+        _safeMint(msg.sender, _tokenIdCounter.current());
+    }
+
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+        return string(abi.encodePacked(uriPrefix, tokenId.toString(), uriSuffix));
+    }
+
+    // Getters
+
+    function totalSupply() public view returns (uint256) {
+        return _tokenIdCounter.current();
+    }
+
+    function getMintCost() external pure returns (uint56) {
+        return mintPrice;
+    }
+
+    // Setters for tokenURI
+
+    function setUriPrefix(string memory _uriPrefix) public onlyOwner {
+        uriPrefix = _uriPrefix;
+    }
+
+    function setUriSuffix(string memory _uriSuffix) public onlyOwner {
+        uriSuffix = _uriSuffix;
+    }
+
+    // Contract balance and withdraw function
 
     function getBalance() external view returns (uint) {
         return address(this).balance;
     }
-    
+
     function withdraw() external onlyOwner  {
         (bool success, ) = payable(royalties).call{value: address(this).balance}("");
         require(success, "Royalties payment failed");
-    }
-
-    // The following functions are overrides required by Solidity.
-
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId)
-        internal
-        override(ERC721, ERC721Enumerable)
-    {
-        super._beforeTokenTransfer(from, to, tokenId);
-    }
-
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
-        super._burn(tokenId);
-    }
-
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
-        return super.tokenURI(tokenId);
-    }
-
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC721, ERC721Enumerable)
-        returns (bool)
-    {
-        return super.supportsInterface(interfaceId);
     }
 }

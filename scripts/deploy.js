@@ -14,15 +14,8 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Royalties = await hre.ethers.getContractFactory("Royalties");
-  const royalties = await Royalties.deploy(["0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266","0x70997970c51812dc3a010c7d01b50e0d17dc79c8"],[50,50]);
-
-  await royalties.deployed();
-
-  console.log("Royalties deployed to:", royalties.address);
-
   const HomeworkToken = await hre.ethers.getContractFactory("HomeworkToken");
-  const homework = await HomeworkToken.deploy(royalties.address);
+  const homework = await HomeworkToken.deploy(["0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266","0x70997970c51812dc3a010c7d01b50e0d17dc79c8"],[50,50]);
 
   await homework.deployed();
 
