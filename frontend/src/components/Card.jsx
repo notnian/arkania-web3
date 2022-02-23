@@ -13,7 +13,7 @@ const Card = ({ id, title, children }) => {
           {title} #{id}
         </strong>
         <div>
-          <a className="Card-link" href={`https://testnets.opensea.io/assets/0xf4f2fcd073912d08eedea09ac49eed4f40803364/${id}`}>
+          <a className="Card-link" href={`https://testnets.opensea.io/assets/0xb591c7e605341357df6aF4c5142d840e1D21F609/${id}`}>
             Voir sur opensea
           </a>
         </div>

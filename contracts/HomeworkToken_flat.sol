@@ -1,4 +1,4 @@
-
+// SPDX-License-Identifier: GPL-3.0
 // File: @openzeppelin/contracts/token/ERC20/IERC20.sol
 
 

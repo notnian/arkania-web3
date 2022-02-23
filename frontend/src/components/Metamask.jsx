@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import HomeworkToken_abi from '../contracts/HomeworkToken_abi.json'
 
 const Metamask = ()=>{
-    const contractAddress = '0xf4f2fcD073912D08EEDeA09Ac49eEd4F40803364';
+    const contractAddress = '0xb591c7e605341357df6aF4c5142d840e1D21F609';
 
     const [account, setAccount] = useState("");
     const [buttonText, setButtonText] = useState("Connect to metamask");
@@ -33,7 +33,7 @@ const Metamask = ()=>{
     const accountChangeHandler = (newAccount)=>{
         setAccount(newAccount)
         fetchUserBalance(newAccount.toString())
-        updateEthers();
+        updateEthers()
     }
 
     const fetchUserBalance = (address)=>{
@@ -76,7 +76,7 @@ const Metamask = ()=>{
 
             <button onClick={mintNft}>Mint nft</button>
 
-            <p><strong>Etherscan link:</strong><a href={etherscanLink}>{etherscanLink}</a></p>
+            <p><strong>Etherscan link: </strong><a href={etherscanLink}>{etherscanLink}</a></p>
 
             {errorMessage}
         </div>
