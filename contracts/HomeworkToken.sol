@@ -2,27 +2,32 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/common/ERC2981.sol";
+import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "./Royalties.sol";
+import "./RoyaltySplitter.sol";
 
 /// @custom:security-contact contact@notnian.dev
-contract HomeworkToken is ERC721, Ownable {
+contract HomeworkToken is ERC721, ERC2981, Ownable {
     using Strings for uint256;
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
-    uint8 constant private maxSupply = 10;
-    uint56 constant private mintPrice = 0.001 ether;
+    uint256 constant private maxSupply = 10;
+    uint256 constant private mintPrice = 0.001 ether;
+    uint96 constant private royaltyFeesInBps = 1000;
 
     string private uriPrefix = "ipfs://QmP6Qh2cZemgAtbq7j4eR5gjAGA8mLGKmvRqXcLPr4PTDY/";
     string private uriSuffix = ".json";
 
-    Royalties private royalties;
+    bytes4 private constant _INTERFACE_ID_ERC2981 = 0x2a55205a;
 
-    constructor(address[] memory _royalitesPayees, uint256[] memory _royalitesShares) ERC721("Homework", "HOW") {
-        // Deploy paymentSplitter
-        royalties = new Royalties(_royalitesPayees, _royalitesShares);
+    RoyaltySplitter private royaltySplitter;
+
+    constructor(address[] memory _payees, uint256[] memory _shares) ERC721("Homework", "HOW") {
+        royaltySplitter = new RoyaltySplitter(_payees, _shares);
+        setDefaultRoyalty(getRoyaltySplitterAddress(), royaltyFeesInBps);
     }
 
     modifier mintRequirements() {
@@ -47,8 +52,12 @@ contract HomeworkToken is ERC721, Ownable {
         return _tokenIdCounter.current();
     }
 
-    function getMintCost() external pure returns (uint56) {
+    function getMintCost() external pure returns (uint256) {
         return mintPrice;
+    }
+
+    function getRoyaltySplitterAddress() public view returns (address) {
+        return address(royaltySplitter);
     }
 
     // Setters for tokenURI
@@ -67,8 +76,13 @@ contract HomeworkToken is ERC721, Ownable {
         return address(this).balance;
     }
 
-    function withdraw() external onlyOwner  {
-        (bool success, ) = payable(royalties).call{value: address(this).balance}("");
-        require(success, "Royalties payment failed");
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, ERC2981) returns (bool) {
+        return
+            interfaceId ==  _INTERFACE_ID_ERC2981 ||
+            super.supportsInterface(interfaceId);
+    }
+
+    function setDefaultRoyalty(address _receiver, uint96 _feeNumerator) public {
+        _setDefaultRoyalty(_receiver, _feeNumerator);
     }
 }
