@@ -8,6 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./RoyaltySplitter.sol";
 
+//["0x5F39276f205533e30a78f4B02535C64171f620D7","0x8372f9c028a8A1fFCeffc6bEdDd4ED344B0D89d9"][40,60]
 /// @custom:security-contact contact@notnian.dev
 contract HomeworkToken is ERC721, ERC2981, Ownable {
     using Strings for uint256;
@@ -74,6 +75,11 @@ contract HomeworkToken is ERC721, ERC2981, Ownable {
 
     function getBalance() external view returns (uint) {
         return address(this).balance;
+    }
+
+    function withdraw() external onlyOwner  {
+        (bool success, ) = payable(royaltySplitter).call{value: address(this).balance}("");
+        require(success, "Royalties payment failed");
     }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, ERC2981) returns (bool) {
